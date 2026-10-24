@@ -1,0 +1,121 @@
+{
+  "schema_version": "sales-job-1",
+  "job_name": "SYNTHETIC SALES DEMO \u2014 7 in casing",
+  "customer": "",
+  "well_name": "",
+  "region": "",
+  "data_origin": "synthetic demo",
+  "revision": "1",
+  "top_md_m": 900.0,
+  "bottom_md_m": 1500.0,
+  "casing_od_m": 0.1778,
+  "casing_id_m": 0.1618,
+  "mass_kg_m": 43.16,
+  "modulus_pa": 205000000000.0,
+  "fluid_density_kg_m3": 1198.264273,
+  "previous_casing_id_m": 0.21,
+  "holes": [
+    {
+      "top_md_m": 900.0,
+      "bottom_md_m": 1500.0,
+      "hole_id_m": 0.2159,
+      "restriction_id_m": 0.21,
+      "source": "synthetic nominal hole"
+    }
+  ],
+  "survey": [
+    {
+      "md_m": 0.0,
+      "inclination_deg": 0.0,
+      "azimuth_deg": 0.0
+    },
+    {
+      "md_m": 300.0,
+      "inclination_deg": 0.0,
+      "azimuth_deg": 0.0
+    },
+    {
+      "md_m": 600.0,
+      "inclination_deg": 15.0,
+      "azimuth_deg": 30.0
+    },
+    {
+      "md_m": 900.0,
+      "inclination_deg": 45.0,
+      "azimuth_deg": 30.0
+    },
+    {
+      "md_m": 1200.0,
+      "inclination_deg": 75.0,
+      "azimuth_deg": 30.0
+    },
+    {
+      "md_m": 1500.0,
+      "inclination_deg": 90.0,
+      "azimuth_deg": 30.0
+    }
+  ],
+  "joint_start_md_m": 900.0,
+  "joint_lengths_m": [
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "joint_offset_m": 6.0,
+  "pattern_every": 2,
+  "custom_joints": null,
+  "zones": [],
+  "start_offset_m": 0.0,
+  "end_offset_m": 0.0,
+  "connection_clearance_m": 0.3,
+  "target_ratio": 0.7,
+  "dls_warning_deg_30m": 3.0,
+  "selected_sku": "DEMO-RIGID-7x8.5"
+}

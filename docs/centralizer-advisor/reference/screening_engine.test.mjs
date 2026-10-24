@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {radialClearance,offsetStandoffRatio,rigidContactSOR,pipeSecondMoment,simpleBeamSagM,midspanScreeningSOR,interpolateStandoffAtLoad,dlsDegreesPer30m,inchToM,ftToM,lbfToN} from './screening_engine.mjs';
+const near=(actual,expected,tol=1e-9)=>assert.ok(Math.abs(actual-expected)<=tol,`${actual} != ${expected}`);
+test('geometric clearance and eccentricity',()=>{near(radialClearance(.2159,.1778),.01905);near(offsetStandoffRatio(.2159,.1778,0),1);near(offsetStandoffRatio(.2159,.1778,.01905),0);near(offsetStandoffRatio(.2159,.1778,.009525),.5)});
+test('rigid wall-contact geometric ratio',()=>near(rigidContactSOR(.2159,.1778,.205),(205-177.8)/(215.9-177.8)));
+test('invalid geometry must not look successful',()=>{assert.throws(()=>radialClearance(.2,.2));assert.throws(()=>rigidContactSOR(.2159,.1778,.23));assert.throws(()=>pipeSecondMoment(.1,.2))});
+test('beam sag scales as fourth power',()=>{let a=simpleBeamSagM(100,10,1e6);near(a,.013020833333333334);near(simpleBeamSagM(100,20,1e6),16*a);near(simpleBeamSagM(0,10,1e6),0);near(midspanScreeningSOR(1,1,.01,.02),.5)});
+test('no extrapolation and no 1-point predictions',()=>{let curve=[{loadN:0,sor:1},{loadN:1000,sor:.7},{loadN:2000,sor:.3}];near(interpolateStandoffAtLoad(curve,500),.85);near(interpolateStandoffAtLoad(curve,1500),.5);assert.equal(interpolateStandoffAtLoad(curve,3000),null);assert.equal(interpolateStandoffAtLoad([{loadN:1000,sor:.67}],900),null)});
+test('dogleg includes inclination and azimuth correctly',()=>{near(dlsDegreesPer30m({mdM:0,incDeg:0,aziDeg:0},{mdM:300,incDeg:90,aziDeg:0}),9);near(dlsDegreesPer30m({mdM:0,incDeg:0,aziDeg:0},{mdM:300,incDeg:0,aziDeg:359}),0)});
+test('units',()=>{near(inchToM(1),.0254);near(ftToM(1),.3048);near(lbfToN(1),4.4482216152605)});

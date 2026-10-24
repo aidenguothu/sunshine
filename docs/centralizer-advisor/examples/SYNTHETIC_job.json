@@ -1,0 +1,41 @@
+{
+  "WARNING": "SYNTHETIC EXAMPLE \u2014 REPLACE BEFORE CUSTOMER USE",
+  "jobName": "SYNTHETIC SALES DEMO - 7in Casing",
+  "units": "SI",
+  "interval": {
+    "topMD_m": 900,
+    "bottomMD_m": 1500
+  },
+  "casing": {
+    "od_m": 0.1778,
+    "id_m": 0.1618,
+    "massPerLength_kg_m": 43.16,
+    "youngsModulus_Pa": 205000000000.0
+  },
+  "holeSections": [
+    {
+      "topMD_m": 900,
+      "bottomMD_m": 1500,
+      "holeID_m": 0.2159,
+      "restrictionID_m": 0.21
+    }
+  ],
+  "fluid": {
+    "density_kg_m3": 1198.264273
+  },
+  "joints": {
+    "length_m": 12,
+    "startMD_m": 900,
+    "allowedOffsets_m": [
+      6
+    ]
+  },
+  "surveyFile": "SYNTHETIC_survey.csv",
+  "products": [
+    "DEMO-RIGID-7x8.5",
+    "DEMO-BOW-7x8.5"
+  ],
+  "targetStandoff_fraction": 0.7,
+  "scenario": "every 2 joints",
+  "status": "synthetic demo; not field validated"
+}

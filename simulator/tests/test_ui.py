@@ -68,3 +68,52 @@ def test_job_planner_run_and_candidate_comparison():
         80
     ).run()
     assert any("Recompare" in w.value for w in app.warning)
+
+
+def test_sales_advisor_patterns_units_and_unknown_bow():
+    app = AppTest.from_file(str(APP), default_timeout=20).run()
+    app.radio[0].set_value("Sunshine sales advisor / 选型助手").run()
+    assert not app.exception and not app.error
+    assert app.metric[0].value == "25"
+    next(s for s in app.selectbox if s.label == "Pattern / 布置方式").set_value("Every joint").run()
+    assert app.metric[0].value == "50"
+    next(r for r in app.radio if r.label == "Input units / 单位").set_value("Field").run()
+    assert not app.exception and not app.error
+    assert app.metric[0].value == "50"
+    next(r for r in app.radio if r.label == "Input units / 单位").set_value("Metric").run()
+    assert not app.exception and not app.error
+    next(s for s in app.selectbox if s.label == "Select SKU / 选择型号").set_value(
+        "DEMO-BOW-7x8.5"
+    ).run()
+    assert not app.exception and not app.error
+    assert app.metric[1].value == "100"
+    frame = next(d.value for d in app.dataframe if "at_support_geometric_sor" in d.value.columns)
+    assert frame["at_support_geometric_sor"].isna().all()
+    next(s for s in app.selectbox if s.label == "Pattern / 布置方式").set_value(
+        "Custom joint list"
+    ).run()
+    next(
+        w for w in app.text_input if w.label == "Custom joint numbers (comma-separated)"
+    ).set_value("bad").run()
+    assert app.error
+    assert not app.exception
+
+
+def test_sales_mixed_catalog_plan_ui():
+    import json
+    from copy import deepcopy
+    from importlib.resources import files
+
+    job = json.loads(files("sunshine_sim").joinpath("data/examples/sales_job.json").read_text())
+    job["sku_zones"] = [dict(top_md_m=1200.0, bottom_md_m=1500.0, sku="DEMO-BOW-7x8.5")]
+    job["sku_overrides"] = [dict(joint_no=1, sku="DEMO-BOW-7x8.5")]
+    app = AppTest.from_file(str(APP), default_timeout=20).run()
+    app.session_state["sales_job"] = deepcopy(job)
+    app.session_state["sales_catalog"] = (
+        files("sunshine_sim").joinpath("data/examples/sales_catalog.json").read_text()
+    )
+    app.session_state["sales_revision"] = 0
+    app.radio[0].set_value("Sunshine sales advisor / 选型助手").run()
+    assert not app.exception and not app.error
+    assert app.metric[0].value == "25"
+    assert app.metric[1].value == "26"

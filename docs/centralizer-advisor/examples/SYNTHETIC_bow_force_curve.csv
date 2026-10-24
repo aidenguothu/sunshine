@@ -1,0 +1,6 @@
+SKU,Hole_ID_mm,Load_N,Standoff_pct,Source
+DEMO-BOW-7x8.5,215.9,0,100,SYNTHETIC curve for automated tests only
+DEMO-BOW-7x8.5,215.9,500,86,SYNTHETIC curve for automated tests only
+DEMO-BOW-7x8.5,215.9,1000,70,SYNTHETIC curve for automated tests only
+DEMO-BOW-7x8.5,215.9,1500,51,SYNTHETIC curve for automated tests only
+DEMO-BOW-7x8.5,215.9,2000,30,SYNTHETIC curve for automated tests only

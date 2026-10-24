@@ -11,6 +11,7 @@ from sunshine_sim.engine.models import CasingSpec
 from sunshine_sim.engine.standoff import single_joint_standoff
 from sunshine_sim.ui.job_screen import render_job_screen
 from sunshine_sim.ui.product_screen import render_product_screen
+from sunshine_sim.ui.sales_screen import render_sales_screen
 from sunshine_sim.ui.span_screen import render_span_screen
 
 st.set_page_config(page_title="Sunshine | Standoff prototype", layout="wide")
@@ -25,7 +26,15 @@ mode = st.radio(
         "Ideal-support beam & spacing",
         "Product catalog & comparison",
         "Job placement planner",
+        "Sunshine sales advisor / 选型助手",
     ],
+)
+if mode == "Sunshine sales advisor / 选型助手":
+    render_sales_screen()
+    st.stop()
+st.caption(
+    "Numerical simulator modes are experimental and require engineering review. "
+    "Use Sunshine sales advisor for the Release 1 selection/proposal workflow."
 )
 if mode == "Job placement planner":
     render_job_screen()

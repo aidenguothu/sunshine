@@ -9,3 +9,5 @@ dist/
 .streamlit/secrets.toml
 .env
 reports/
+
+.local/

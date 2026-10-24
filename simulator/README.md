@@ -231,3 +231,81 @@ The existing JSON reports and CSV schedules remain available.
 UI validation included a real Chromium browser run and visual inspection of the
 results and section screens, in addition to automated axis/unit/invalid-span tests.
 No calculation-engine changes or additional engineering validation are implied.
+
+## Release 1 sales advisor (application v0.6)
+
+Select **Sunshine sales advisor / 选型助手** in Calculation mode. The existing four
+simulator modes remain available and unchanged mathematically. The sales advisor
+uses a separate dimensional workflow; it does not present experimental mechanical
+outputs as customer design approval.
+
+1. **Well:** name/revision, optional customer, data origin, analysis interval.
+2. **Geometry & survey:** metric/field inputs, casing ID or verified linear mass,
+   fluid density, hole/restriction intervals, explicit-unit CSV import, survey and DLS.
+3. **Sunshine SKU:** import sales-1 JSON or the starter-pack CSV template; inspect
+   dimensions, evidence and Suitable / Verify / Not suitable status.
+4. **Joint placement:** enter actual joint lengths, choose every 1/2/3 joints or a
+   custom joint list, set within-joint/beginning/end offsets and include/exclude zones.
+   Assign a different SKU by interval or selected joint (joint override wins).
+5. **Results:** exact installation positions, geometric rigid-support illustrations,
+   unknown bow/between-support results, pattern counts, BOM, saved snapshots and RFQ.
+
+### Honest product data
+
+The bundled CSV-derived SKUs are **SYNTHETIC EXAMPLE — REPLACE BEFORE CUSTOMER USE**.
+No real Sunshine SKU, certification, body length, collar part number or price was
+invented. Missing dimensions/installation references trigger review; hard geometric
+incompatibilities block customer proposal/RFQ downloads. A single restoring-force
+rating does not yield a curve. This R1 mode does not compute bow support loads or
+between-support sag, even if a catalog contains complete curve points. Target
+optimization remains disabled. Curved surveys are accepted for dimensional planning
+and DLS display, not for force-based standoff simulation.
+
+The `sales-1` JSON schema is separate from the existing `0.3` experimental spring
+catalog. Download the sales catalog as a complete schema template. Populate actual
+manufacturer-approved metadata: SKU, manufacturer, family, casing/hole range, rigid
+or compressed/free OD, bore, body length, approved collar rule/part/count, evidence,
+revision and approval status. Optional company prices require currency and a quote
+reference. Approval metadata is supplied by the company; it is not authenticated
+software certification. Do not publicly expose catalog administration as a secure
+multi-user service.
+
+### Saved jobs and proposals
+
+Download the `advisor-1` snapshot for portable job + full catalog storage, and the
+assessment JSON for timestamped results. Explicit workspace saves are stored in
+ignored `simulator/.local/advisor/` and survive browser reload; reopen from **Open /
+save a job**. They are shared workspace files, not private per-user cloud storage.
+Existing jobs/catalogs/reports are not deleted or migrated. New files use distinct
+schema versions and reject mismatches.
+
+Download the preliminary proposal HTML, open it in a browser, and choose **Print /
+Save as PDF**. It runs offline with embedded CSS; no PDF SaaS is required. Default
+rigid and bow demos were verified as **three A4 PDF pages**; long installation
+schedules add continuation pages rather than omitting positions. Contact fields
+are optional, included only with consent, and no emails are sent. BOM prices remain
+unknown unless company inputs supply them. Complete project totals are not invented
+when any line is unpriced.
+
+Installation/BOM CSVs include methodology-quality/demo flags and protect spreadsheet
+formula cells. Reports include UTC creation time, revision, model version, product
+evidence, missing-data notes and the preliminary-use disclaimer.
+
+### Run and test
+
+```sh
+cd /workspace/sunshine/simulator
+.venv/bin/python -m pip install --cache-dir /tmp/sunshine-pip-cache -e '.[dev,ui]'
+.venv/bin/ruff check .
+.venv/bin/python -m pytest -q
+.venv/bin/streamlit run src/sunshine_sim/ui/app.py --server.address 0.0.0.0 --server.port 8501 --server.headless true --browser.gatherUsageStats false
+```
+
+From repository root, the optional supplied mathematical reference tests run with:
+
+```sh
+node --test docs/centralizer-advisor/reference/screening_engine.test.mjs
+```
+
+No additional runtime dependencies or external accounts were added. See
+[Release 1 change and validation report](../docs/CENTRALIZER_ADVISOR_RELEASE1.md).
