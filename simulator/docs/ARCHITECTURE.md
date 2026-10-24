@@ -119,3 +119,17 @@ license has been granted by this skeleton. Add a counsel-approved LICENSE before
 external distribution. Open source (e.g. Apache-2.0 or MIT) is an option only with
 company authorization; exclude confidential catalogs/data and licensed standards text.
 Third-party Python libraries retain their own licenses and distribution obligations.
+
+## v0.3 implemented update
+
+Catalog JSON import/export and session editing now accept bow-spring metadata and
+explicitly typed installed net-lateral force/offset curves. The isolated-span model
+inverts a strictly monotone measured branch without extrapolation, adds equal end
+settlement to the beam profile, and screens supplied candidates at equal conditions.
+Test-hole and casing compatibility must match. Two synthetic demo curves ship in
+package resources. No certified company data has been loaded, and all imports remain
+unverified. JSON retains full provenance; CSV exports retain review/validity flags.
+
+Next release priorities are multi-support load sharing and continuous-string
+mechanics, reviewed survey inputs, axial/contact modeling and engineering benchmarks.
+Do not describe the isolated-span candidate search as full-string placement optimization.

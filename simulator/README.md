@@ -99,3 +99,57 @@ Regression coverage includes endpoints, symmetry, midpoint, equilibrium, vertica
 and inclined loading, fourth-power span scaling, stiffness scaling, contact guards,
 invalid inputs, infeasible candidates and both UI modes. These tests verify the
 implemented ideal model; independent engineering/field validation remains required.
+
+## Version 0.3: centralizer catalog and product comparisons
+
+Select **Product catalog & comparison**. DEMO-A and DEMO-B are deliberately synthetic,
+not Sunshine products or evidence of a sales claim. View their force–offset curves,
+compare their standoff at identical conditions, and screen supplied isolated-span
+lengths. Blank results mean unsupported/infeasible, not zero standoff.
+
+### Enter a product
+
+1. Expand **Enter / edit centralizer specifications**.
+2. Use a new product ID to add an entry. Enter casing compatibility, free OD,
+   curve test-hole diameter, starting/running forces, test reference and conditions.
+3. Paste curve rows as `casing_offset_mm, net_lateral_restoring_force_N`, starting
+   at `0,0`. Both coordinates must strictly increase after the first point.
+4. Save to the session, select products to compare, and use matching casing/hole
+   diameters. Download your catalog to retain edits; sessions are not a database.
+5. Download the JSON report for complete inputs/provenance or CSV comparison for
+   review. Neither export constitutes a qualified engineering recommendation.
+
+A centralizer test laboratory/domain expert must confirm the curve interpretation:
+this solver requires installed **net lateral restoring force versus casing-center
+lateral offset**, for the stated hole, casing and documented loading branch/test
+conditions. Individual bow compression or one restoring-force rating is insufficient.
+The UI does not convert those measurements into a valid installed curve. Imports
+and edits remain unverified; a certificate reference is not software certification.
+
+### Mechanical assumptions
+
+For an **isolated** straight span with two identical compliant end supports, each
+reaction is `qL/2`. Piecewise-linear inversion of the installed curve gives support
+settlement `e`. The span offset is `e + y_beam(x)`, with the analytic maximum at
+midspan. Measured curve endpoints bound the calculation; force beyond the last
+measurement is rejected. Floating-point endpoint tolerances are 1e-9 N (load) and
+1e-12 m (test-clearance boundary), not engineering extrapolation allowances.
+
+This ignores adjacent-span loading and continuous-string bending. In particular,
+shared interior supports in a repeated string can carry approximately `qL`, not
+`qL/2`. **Do not apply isolated-span candidate results as a full-string spacing
+schedule.** Also excluded: nonlinear wall contact, well curvature, axial loads,
+friction, coupling geometry, support rotation constraints and run-in simulation.
+Starting/running forces and free OD are stored and displayed as metadata; they do
+not prove run-in feasibility or change the installed lateral curve calculation.
+Rigid/semi-rigid products, hysteresis branch mixing, net uplift and hole-size curve
+rescaling are unsupported. Comparative results do not imply superiority in the field.
+
+### Gate to operational use
+
+Before engineer-approved job recommendations: supply reviewed company test data;
+implement and validate multi-support string equilibrium/contact, survey geometry,
+axial loading and mounting constraints; run independent blind benchmarks; establish
+uncertainty/acceptance limits and sign off the operating envelope. A deadline or
+passing software tests does not satisfy those gates. The present release is suitable
+for supervised software evaluation and clearly labelled synthetic demonstrations.

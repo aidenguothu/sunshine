@@ -22,3 +22,25 @@ def test_geometry_and_beam_modes():
     app.text_input[0].set_value("3, broken").run()
     assert app.error
     assert not app.exception
+
+
+def test_product_comparison_and_editor():
+    app = AppTest.from_file(str(APP)).run()
+    app.radio[0].set_value("Product catalog & comparison").run()
+    assert not app.exception
+    assert not app.error
+    assert len(app.dataframe) == 2
+    # Synthetic stronger support must display greater standoff at identical span.
+    rows = app.dataframe[1].value
+    at_four = rows[rows["Span (m)"] == 4]
+    assert at_four.iloc[1]["Min standoff (%)"] > at_four.iloc[0]["Min standoff (%)"]
+    # Save an edited ID; the new product must be present and marked unverified.
+    editor_id = next(w for w in app.text_input if w.label.startswith("Product ID"))
+    editor_id.set_value("USER-TEST")
+    next(b for b in app.button if b.label == "Save product to this session").click().run()
+    assert not app.exception
+    assert "USER-TEST" in app.selectbox[0].options
+    assert "user_supplied_unverified" in app.session_state["catalog_json"]
+    next(w for w in app.number_input if w.label == "Hole diameter (mm)").set_value(220).run()
+    assert app.error
+    assert not app.exception

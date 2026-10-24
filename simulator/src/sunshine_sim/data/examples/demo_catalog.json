@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.3",
+  "products": [
+    {
+      "spec": {
+        "kind": "bow_spring",
+        "compatible_casing_od_m": 0.1778,
+        "free_outer_diameter_m": 0.235,
+        "test_hole_diameter_m": 0.2159,
+        "starting_force_n": 1500,
+        "running_force_n": 1000,
+        "test_reference": "SYNTHETIC \u2014 no Sunshine certificate",
+        "product_id": "DEMO-A",
+        "restoring_curve": [
+          {
+            "compression_m": 0,
+            "restoring_force_n": 0
+          },
+          {
+            "compression_m": 0.005,
+            "restoring_force_n": 750.0
+          },
+          {
+            "compression_m": 0.01,
+            "restoring_force_n": 1500.0
+          },
+          {
+            "compression_m": 0.015,
+            "restoring_force_n": 2250.0
+          },
+          {
+            "compression_m": 0.019,
+            "restoring_force_n": 2850.0
+          }
+        ]
+      },
+      "curve_basis": "net_lateral_force_vs_casing_offset_in_test_hole",
+      "data_status": "synthetic_demo",
+      "test_conditions": "Synthetic linear curve, room temperature; not measured; identical setup for comparison"
+    },
+    {
+      "spec": {
+        "kind": "bow_spring",
+        "compatible_casing_od_m": 0.1778,
+        "free_outer_diameter_m": 0.235,
+        "test_hole_diameter_m": 0.2159,
+        "starting_force_n": 1500,
+        "running_force_n": 1000,
+        "test_reference": "SYNTHETIC \u2014 no Sunshine certificate",
+        "product_id": "DEMO-B",
+        "restoring_curve": [
+          {
+            "compression_m": 0,
+            "restoring_force_n": 0
+          },
+          {
+            "compression_m": 0.005,
+            "restoring_force_n": 1500.0
+          },
+          {
+            "compression_m": 0.01,
+            "restoring_force_n": 3000.0
+          },
+          {
+            "compression_m": 0.015,
+            "restoring_force_n": 4500.0
+          },
+          {
+            "compression_m": 0.019,
+            "restoring_force_n": 5700.0
+          }
+        ]
+      },
+      "curve_basis": "net_lateral_force_vs_casing_offset_in_test_hole",
+      "data_status": "synthetic_demo",
+      "test_conditions": "Synthetic linear curve, room temperature; not measured; identical setup for comparison"
+    }
+  ]
+}

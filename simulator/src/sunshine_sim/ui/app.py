@@ -9,6 +9,7 @@ import streamlit as st
 
 from sunshine_sim.engine.models import CasingSpec
 from sunshine_sim.engine.standoff import single_joint_standoff
+from sunshine_sim.ui.product_screen import render_product_screen
 from sunshine_sim.ui.span_screen import render_span_screen
 
 st.set_page_config(page_title="Sunshine | Standoff prototype", layout="wide")
@@ -16,7 +17,13 @@ st.title("Sunshine · Casing standoff prototype")
 st.warning(
     "UNVALIDATED engineering screening. Not for operational placement or compliance decisions."
 )
-mode = st.radio("Calculation mode", ["Prescribed-offset geometry", "Ideal-support beam & spacing"])
+mode = st.radio(
+    "Calculation mode",
+    ["Prescribed-offset geometry", "Ideal-support beam & spacing", "Product catalog & comparison"],
+)
+if mode == "Product catalog & comparison":
+    render_product_screen()
+    st.stop()
 if mode == "Ideal-support beam & spacing":
     render_span_screen()
     st.stop()

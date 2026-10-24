@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sunshine-centralizer-sim"
-version = "0.2.0"
+version = "0.3.0"
 description = "Unvalidated centralizer placement engineering prototype"
 requires-python = ">=3.11"
 license = "LicenseRef-Proprietary"
@@ -25,3 +25,6 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[tool.setuptools.package-data]
+sunshine_sim = ["data/examples/*.json"]
