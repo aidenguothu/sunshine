@@ -203,3 +203,31 @@ proxy (403). Their current feature sets, algorithms and numerical equivalence ha
 **not** been verified. No proprietary implementation or standards-compliance claim
 is made. A future product review should use accessible official documentation and
 licensed benchmark cases; visual workflow similarity is not engineering validation.
+
+## Version 0.5: depth-aligned design and results workspace
+
+The planner now separates **Well design**, **Centralizer placement**, **Simulation
+results**, and **Layout comparison** into tabs. Design/placement previews show the
+centered casing and caliper; they are not simulation predictions.
+
+After running, inspect four shared-MD tracks: local well schematic, hole/casing
+sizes, standoff with conservative bounds/target, and support loads. Depth increases
+downward. Product colors remain consistent across placement symbols and loads.
+Stylized bows mark centralizer positions; glyph length is exaggerated and does not
+represent product dimensions. The schematic uses independently scaled transverse
+and depth axes and is not a trajectory/TVD plot.
+
+Use **Inspect measured depth** and the **Cross-section inspector** to view the local
+hole, casing OD/ID, interpolated standoff and low-side gap. The circular view uses
+equal aspect ratio. Unsupported spans are highlighted, their casing prediction is
+omitted, and their cross-section is withheld. Sampled local values and conservative
+span/joint bounds remain explicitly separate.
+
+**Download interactive diagram (HTML)** produces a self-contained Plotly diagram
+that can be opened offline. It retains the unvalidated/demo notice. It contains the
+job visualization, so treat it as confidential when using company/client inputs.
+The existing JSON reports and CSV schedules remain available.
+
+UI validation included a real Chromium browser run and visual inspection of the
+results and section screens, in addition to automated axis/unit/invalid-span tests.
+No calculation-engine changes or additional engineering validation are implied.
