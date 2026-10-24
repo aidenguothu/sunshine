@@ -19,6 +19,9 @@ reviewed clause-to-requirement-to-test traceability matrix.
 
 - Current: prescribed-offset, circular single-joint standoff and cross-section plot;
   immutable casing/centralizer data models, JSON screening export, unit tests.
+- Current (v0.2): ideal centered-support, uniform-load straight beam; analytic
+  midpoint minimum; supplied-candidate spacing screen; JSON screening export.
+  This is not a product-qualified placement optimizer.
 - Future: minimum-curvature survey interpolation; casing beam/contact equilibrium
   with buoyant loading, axial tension, inclination, curvature and centralizer support.
 - Future: minimum and sampled standoff per joint and over the full string; include

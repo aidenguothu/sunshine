@@ -9,12 +9,17 @@ import streamlit as st
 
 from sunshine_sim.engine.models import CasingSpec
 from sunshine_sim.engine.standoff import single_joint_standoff
+from sunshine_sim.ui.span_screen import render_span_screen
 
 st.set_page_config(page_title="Sunshine | Standoff prototype", layout="wide")
 st.title("Sunshine · Casing standoff prototype")
 st.warning(
-    "UNVALIDATED geometric screening. Not for operational placement or compliance decisions."
+    "UNVALIDATED engineering screening. Not for operational placement or compliance decisions."
 )
+mode = st.radio("Calculation mode", ["Prescribed-offset geometry", "Ideal-support beam & spacing"])
+if mode == "Ideal-support beam & spacing":
+    render_span_screen()
+    st.stop()
 st.caption(
     "Prescribe eccentricity to explore geometry. This does not predict centralizer performance."
 )
