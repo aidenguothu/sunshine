@@ -1,0 +1,13 @@
+{
+  "status": "SYNTHETIC SCREENING INPUT — NOT FIELD DATA",
+  "units": "SI",
+  "casing": {
+    "outer_diameter_m": 0.1778,
+    "inner_diameter_m": 0.1571,
+    "mass_per_length_kg_m": 43.2,
+    "grade": "N80",
+    "joint_length_m": 12.0
+  },
+  "hole_diameter_m": 0.2159,
+  "prescribed_eccentricity_m": 0.005
+}
