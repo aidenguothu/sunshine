@@ -133,3 +133,18 @@ unverified. JSON retains full provenance; CSV exports retain review/validity fla
 Next release priorities are multi-support load sharing and continuous-string
 mechanics, reviewed survey inputs, axial/contact modeling and engineering benchmarks.
 Do not describe the isolated-span candidate search as full-string placement optimization.
+
+## v0.4 implemented update
+
+The job planner accepts casing sections, survey stations, caliper stations, fluid
+densities and manual mixed-product placement MDs. It loads a synthetic interval,
+shares support reactions between adjacent independent pin spans, and reports local
+profiles and conservative span/joint standoff bounds. A bounded regular-layout
+comparison checks all selected candidate spacings across catalog products; it does
+not search arbitrary mixed-product positions or claim a globally optimal schedule.
+
+The current survey validator intentionally rejects changing inclination/azimuth.
+This release is not a deviated/curved continuous-string solver. Support loading and
+linear end-settlement are improvements over isolated-span screening but do not
+satisfy rotation continuity, axial equilibrium or contact constraints. Commercial
+SLB/Halliburton pages were inaccessible (403); no feature parity was established.

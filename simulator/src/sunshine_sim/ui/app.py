@@ -9,6 +9,7 @@ import streamlit as st
 
 from sunshine_sim.engine.models import CasingSpec
 from sunshine_sim.engine.standoff import single_joint_standoff
+from sunshine_sim.ui.job_screen import render_job_screen
 from sunshine_sim.ui.product_screen import render_product_screen
 from sunshine_sim.ui.span_screen import render_span_screen
 
@@ -19,8 +20,16 @@ st.warning(
 )
 mode = st.radio(
     "Calculation mode",
-    ["Prescribed-offset geometry", "Ideal-support beam & spacing", "Product catalog & comparison"],
+    [
+        "Prescribed-offset geometry",
+        "Ideal-support beam & spacing",
+        "Product catalog & comparison",
+        "Job placement planner",
+    ],
 )
+if mode == "Job placement planner":
+    render_job_screen()
+    st.stop()
 if mode == "Product catalog & comparison":
     render_product_screen()
     st.stop()

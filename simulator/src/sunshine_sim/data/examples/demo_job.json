@@ -1,0 +1,152 @@
+{
+  "schema_version": "0.4",
+  "data_status": "SYNTHETIC DEMO \u2014 no wellsite data",
+  "internal_density_kg_m3": 1200.0,
+  "external_density_kg_m3": 1200.0,
+  "casing_sections": [
+    {
+      "start_md_m": 1000.0,
+      "end_md_m": 1012.0,
+      "casing": {
+        "outer_diameter_m": 0.1778,
+        "inner_diameter_m": 0.1571,
+        "mass_per_length_kg_m": 43.2,
+        "grade": "N80",
+        "joint_length_m": 12.0,
+        "youngs_modulus_pa": 207000000000.0
+      }
+    },
+    {
+      "start_md_m": 1012.0,
+      "end_md_m": 1024.0,
+      "casing": {
+        "outer_diameter_m": 0.1778,
+        "inner_diameter_m": 0.1548,
+        "mass_per_length_kg_m": 47.6,
+        "grade": "N80",
+        "joint_length_m": 12.0,
+        "youngs_modulus_pa": 207000000000.0
+      }
+    }
+  ],
+  "survey": [
+    {
+      "md_m": 1000.0,
+      "inclination_deg": 60.0,
+      "azimuth_deg": 0.0
+    },
+    {
+      "md_m": 1024.0,
+      "inclination_deg": 60.0,
+      "azimuth_deg": 0.0
+    }
+  ],
+  "caliper": [
+    {
+      "md_m": 1000.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1001.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1003.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1004.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1006.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1007.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1009.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1010.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1012.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1013.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1015.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1016.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1018.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1019.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1021.0,
+      "hole_diameter_m": 0.2159
+    },
+    {
+      "md_m": 1022.5,
+      "hole_diameter_m": 0.225
+    },
+    {
+      "md_m": 1024.0,
+      "hole_diameter_m": 0.2159
+    }
+  ],
+  "placements": [
+    {
+      "md_m": 1000.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1003.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1006.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1009.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1012.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1015.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1018.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1021.0,
+      "product_id": "DEMO-B"
+    },
+    {
+      "md_m": 1024.0,
+      "product_id": "DEMO-B"
+    }
+  ]
+}

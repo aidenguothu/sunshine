@@ -153,3 +153,53 @@ axial loading and mounting constraints; run independent blind benchmarks; establ
 uncertainty/acceptance limits and sign off the operating envelope. A deadline or
 passing software tests does not satisfy those gates. The present release is suitable
 for supervised software evaluation and clearly labelled synthetic demonstrations.
+
+## Version 0.4: job placement planner
+
+Select **Job placement planner**. A complete synthetic job is loaded automatically:
+1000–1024 m MD, two 7-inch casing sections with different weights/IDs, 60-degree
+inclination, caliper washouts, and nine DEMO-B centralizers at 3 m spacing.
+
+1. Inspect/edit casing rows, survey and caliper tables. Table units are SI: m, kg/m,
+   Pa and degrees. This screen deliberately labels diameters in m, not mm.
+2. Edit each placement's MD and select its product. Use **Generate placement rows**
+   for a starting layout; end supports and casing-section boundaries are included.
+3. Click **Run current placement** for the profile, support reactions/offsets,
+   conservative per-span/per-joint bounds and a downloadable schedule/report.
+4. Try DEMO-A on one support and rerun; adjacent-span predictions change.
+5. Click **Compare regular layouts for all catalog products** to evaluate supplied
+   nominal spacings and report the fewest supports among tested passing layouts.
+   This bounded search does not optimize arbitrary mixed-product schedules or cost.
+6. Download editable job JSON and catalog JSON separately to preserve your inputs.
+   Load the catalog before importing a job using its product IDs. Report JSON includes
+   the full catalog snapshot and input job; editable job JSON is a separate format.
+
+### Model limits
+
+Spans share support forces (interior reaction = sum of neighboring half-span loads),
+while each span is assumed pin-connected. Linear end-settlement plus beam sag gives
+its offset. This is **not** a continuous elastic casing string: rotations need not be
+continuous, and bending moments across supports are omitted. Curved surveys, varying
+OD across casing sections, contact, friction and axial tension remain unsupported.
+Survey and caliper must cover the entire interval; every casing-section boundary
+must have a support. Casing-section joints restart at the section start, and the
+last joint may be partial. This isn't a measured tally import yet.
+
+Caliper is interpolated linearly, including washouts between supports. Each support
+requires a matching test-hole curve; no rescaling is performed. The minimum radial
+clearance and analytic maximum offset yield a **conservative standoff lower bound**.
+The actual minimum ratio and its depth can differ; the reported maximum-offset MD
+is not presented as minimum-standoff MD. Profile points illustrate local predictions.
+If the bound permits contact, results are withheld pending a contact solver rather
+than reporting a negative physical standoff. Per-joint bounds use overlapping span
+envelopes and can be conservative further. No operational approval is implied.
+
+### Commercial workflow reference
+
+This UI follows the requested general workflow: job geometry → product catalog →
+manual placement → simulate → compare layouts → export. Attempts to retrieve public
+SLB and Halliburton pages on 2026-10-24 were blocked by the environment's network
+proxy (403). Their current feature sets, algorithms and numerical equivalence have
+**not** been verified. No proprietary implementation or standards-compliance claim
+is made. A future product review should use accessible official documentation and
+licensed benchmark cases; visual workflow similarity is not engineering validation.

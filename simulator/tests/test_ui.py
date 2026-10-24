@@ -44,3 +44,27 @@ def test_product_comparison_and_editor():
     next(w for w in app.number_input if w.label == "Hole diameter (mm)").set_value(220).run()
     assert app.error
     assert not app.exception
+
+
+def test_job_planner_run_and_candidate_comparison():
+    app = AppTest.from_file(str(APP)).run()
+    app.radio[0].set_value("Job placement planner").run()
+    assert not app.exception
+    next(b for b in app.button if b.label == "Run current placement").click().run()
+    assert not app.exception
+    assert not app.error
+    assert app.metric[0].label == "Conservative interval standoff lower bound"
+    assert len(next(d.value for d in app.dataframe if "reaction_n" in d.value.columns)) == 9
+    next(
+        b for b in app.button if b.label == "Compare regular layouts for all catalog products"
+    ).click().run()
+    assert not app.exception
+    assert app.success
+
+    # Results survive reruns, and input changes mark saved comparisons stale.
+    app.run()
+    assert app.success
+    next(w for w in app.number_input if w.label.startswith("Illustrative target (%)")).set_value(
+        80
+    ).run()
+    assert any("Recompare" in w.value for w in app.warning)
